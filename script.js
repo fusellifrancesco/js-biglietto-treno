@@ -2,10 +2,18 @@ let eta = prompt("Inserisci la tua età");
 let chilometri = prompt("Inserisci quanti chilometri desideri percorrere");
 const prezzoAlKm = 0.21;
 
-let prezzoBiglietto = chilometri * prezzoAlKm;
+let prezzoBigliettoIntero = chilometri * prezzoAlKm;
 
-let prezzoMinorenni = prezzoBiglietto * 0.20;
-let prezzoOver65 = prezzoBiglietto * 0.40;
+let prezzoUnder18 = prezzoBigliettoIntero - (prezzoBigliettoIntero * 0.20);
+let prezzoOver65 = prezzoBigliettoIntero - (prezzoBigliettoIntero * 0.40);
 
 let prezzoOver2decimali = prezzoOver65.toFixed(2);
-let prezzoMinorenni2Decimali = prezzoMinorenni.toFixed(2)
+let prezzoUnder2Decimali = prezzoUnder18.toFixed(2)
+
+if (eta < 18){
+    console.log(prezzoUnder2Decimali);
+} else if (eta >= 65){
+    console.log(prezzoOver2decimali);
+} else {
+    console.log(prezzoBigliettoIntero)
+}
